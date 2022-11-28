@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BarberModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Barber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Information" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Experince" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Peculiarities" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BirthDay" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Volume" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Record1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Serviceid" Type="int" Nullable="false" />
+          <Property Name="Clientid" Type="int" Nullable="false" />
+          <Property Name="Materialsid" Type="int" Nullable="false" />
+          <Property Name="Barberid" Type="int" Nullable="false" />
+          <Property Name="DataAndTime" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Record1_Barber">
+          <End Role="Barber" Type="Self.Barber" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barber">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Barberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record1_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Clientid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record1_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Materialsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record1_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Serviceid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BarberModelContainer">
+          <EntitySet Name="Barber" EntityType="Self.Barber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record1" EntityType="Self.Record1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Record1_Barber" Association="Self.FK_Record1_Barber">
+            <End Role="Barber" EntitySet="Barber" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record1_Client" Association="Self.FK_Record1_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record1_Materials" Association="Self.FK_Record1_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record1_Service" Association="Self.FK_Record1_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BarberModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Barber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Information" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Experince" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Record1" Relationship="Self.FK_Record1_Barber" FromRole="Barber" ToRole="Record1" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Peculiarities" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Record1" Relationship="Self.FK_Record1_Client" FromRole="Client" ToRole="Record1" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Volume" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Record1" Relationship="Self.FK_Record1_Materials" FromRole="Materials" ToRole="Record1" />
+        </EntityType>
+        <EntityType Name="Record1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Serviceid" Type="Int32" Nullable="false" />
+          <Property Name="Clientid" Type="Int32" Nullable="false" />
+          <Property Name="Materialsid" Type="Int32" Nullable="false" />
+          <Property Name="Barberid" Type="Int32" Nullable="false" />
+          <Property Name="DataAndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Barber" Relationship="Self.FK_Record1_Barber" FromRole="Record1" ToRole="Barber" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Record1_Client" FromRole="Record1" ToRole="Client" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_Record1_Materials" FromRole="Record1" ToRole="Materials" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Record1_Service" FromRole="Record1" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <NavigationProperty Name="Record1" Relationship="Self.FK_Record1_Service" FromRole="Service" ToRole="Record1" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Record1_Barber">
+          <End Role="Barber" Type="Self.Barber" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barber">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Barberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record1_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Clientid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record1_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Materialsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record1_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Record1" Type="Self.Record1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record1">
+              <PropertyRef Name="Serviceid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BarberEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Barber" EntityType="Self.Barber" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" />
+          <EntitySet Name="Record1" EntityType="Self.Record1" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Record1_Barber" Association="Self.FK_Record1_Barber">
+            <End Role="Barber" EntitySet="Barber" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record1_Client" Association="Self.FK_Record1_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record1_Materials" Association="Self.FK_Record1_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record1_Service" Association="Self.FK_Record1_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Record1" EntitySet="Record1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BarberModelContainer" CdmEntityContainer="BarberEntities">
+          <EntitySetMapping Name="Barber">
+            <EntityTypeMapping TypeName="BarberModel.Barber">
+              <MappingFragment StoreEntitySet="Barber">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Information" ColumnName="Information" />
+                <ScalarProperty Name="Experince" ColumnName="Experince" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="BarberModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Peculiarities" ColumnName="Peculiarities" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="BarberModel.Materials">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Record1">
+            <EntityTypeMapping TypeName="BarberModel.Record1">
+              <MappingFragment StoreEntitySet="Record1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Serviceid" ColumnName="Serviceid" />
+                <ScalarProperty Name="Clientid" ColumnName="Clientid" />
+                <ScalarProperty Name="Materialsid" ColumnName="Materialsid" />
+                <ScalarProperty Name="Barberid" ColumnName="Barberid" />
+                <ScalarProperty Name="DataAndTime" ColumnName="DataAndTime" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="BarberModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BarberModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
