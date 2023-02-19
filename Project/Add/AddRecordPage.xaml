@@ -1,0 +1,42 @@
+﻿<Page x:Class="Project.Add.AddRecordPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project.Add"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="AddRecordPage">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                
+            </Grid.RowDefinitions>
+           
+            <Label Content="Услуга" Grid.Row="0" Margin="40,21,293,25"/>
+            <Label Content="Клиент" Grid.Row="1" Margin="40,21,293,25"/>
+            <Label Content="Материал" Grid.Row="2" Margin="40,21,293,25"/>
+            <Label Content="Барбер" Grid.Row="3" Margin="40,21,293,25"/>
+            <Label Content="Дата и время записи" Grid.Row="4" Margin="40,21,293,25"/>
+            <Label Content="Комментарий" Grid.Row="5" Margin="40,21,293,25"/>
+
+
+           
+            <TextBox Name="serviceid" Grid.Row="0" Margin="122,21.2,152,25.2"/>
+            <TextBox Name="clientid" Grid.Row="1" Margin="122,21.6,152,24.6"/>
+            <TextBox Name="materialid" Grid.Row="2" Margin="122,21.4,152,24.8"/>
+            <TextBox Name="barberid" Grid.Row="3" Margin="122,21.4,152,24.8"/>
+            <DatePicker Name="dataandtime" Grid.Row="4"  Margin="122,21.4,152,24.8" IsDropDownOpen="True" SelectedDateFormat="Short" />
+            <TextBox Name="comment" Grid.Row="5" Margin="122,21.4,152,24.8"/>
+            <Button Grid.Row="6" Click="Button_Click" Margin="40,22.8,293,29.6">Добавить</Button>
+        </Grid>
+    </Grid>
+</Page>

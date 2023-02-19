@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using Project.Add;
+using Project.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,20 @@ namespace Project.View
         public KlientsPage()
         {
             InitializeComponent();
+            listviewUsers.ItemsSource = AppData.bs.barberEntities.Client.ToList();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StartWindows startWindows = new StartWindows();
+
+            startWindows.Show();
+
+
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddKlientPage());
+        }
+
     }
 }

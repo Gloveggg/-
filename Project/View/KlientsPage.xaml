@@ -9,26 +9,23 @@
       Title="KlientsPage">
 
     <Grid>
-        <Button Content="Load" HorizontalAlignment="Left" Height="40" Margin="10,0,0,0" 
-                VerticalAlignment="Top" Width="100" />
+        <Button Content="Выход" HorizontalAlignment="Left" Height="40" Margin="10,0,0,0" 
+                VerticalAlignment="Top" Width="100" Click="Button_Click" />
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="40" Margin="150,0,0,0" 
+                VerticalAlignment="Top" Width="100" Click="Button_Click_1" />
         <ListView x:Name="listviewUsers" HorizontalAlignment="Stretch"  
                   Margin="10,60,10,10" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id}" 
                       Header="№" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Service. ServiceName}" 
-                      Header="Услуга" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Client.Name}" 
-                      Header="Клиент" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Materials.Product }" 
-                      Header="Материалы" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Barber.Name }" 
-                      Header="Барбер" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=DataAndTime}" 
-                      Header="Дата и время" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Comment}" 
-                      Header="Коммментарий" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path= Name}" 
+                      Header="Имя" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Peculiarities}" 
+                      Header="Особенности" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=BirthDay }" 
+                      Header="Дата рождения" Width="100"/>
+                   
                 </GridView>
             </ListView.View>
         </ListView>

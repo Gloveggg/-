@@ -20,9 +20,13 @@ namespace Project.Windows
     /// </summary>
     public partial class MainWindows : Window
     {
+
+        public static MainWindows MainWindow;
+
         public MainWindows()
         {
             InitializeComponent();
+            MainWindow = this;
         }
 
         private void Record_Click(object sender, RoutedEventArgs e)
@@ -48,6 +52,10 @@ namespace Project.Windows
         private void Barber_Click(object sender, RoutedEventArgs e)
         {
             MainFrm.Navigate(new BarberPage());
+        }
+        private void Button12_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Кнопка нажата");
         }
     }
 }

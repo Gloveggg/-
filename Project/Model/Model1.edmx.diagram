@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eab37c3b12a24996b717206f3758a065" Name="Diagram1">
-        <EntityTypeShape EntityType="BarberModel.Barber" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BarberModel.Client" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BarberModel.Materials" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="BarberModel.Record1" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="BarberModel.Service" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BarberModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="BarberModel.FK_Record1_Barber" ManuallyRouted="false" />
-        <AssociationConnector Association="BarberModel.FK_Record1_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="BarberModel.FK_Record1_Materials" ManuallyRouted="false" />
-        <AssociationConnector Association="BarberModel.FK_Record1_Service" ManuallyRouted="false" />
+      <Diagram DiagramId="eab37c3b12a24996b717206f3758a065" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="BarberModel.Barber" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="BarberModel.Client" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="BarberModel.Materials" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="BarberModel.Record1" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="BarberModel.Service" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="BarberModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
+        <AssociationConnector Association="BarberModel.FK_Record1_Barber" />
+        <AssociationConnector Association="BarberModel.FK_Record1_Client" />
+        <AssociationConnector Association="BarberModel.FK_Record1_Materials" />
+        <AssociationConnector Association="BarberModel.FK_Record1_Service" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

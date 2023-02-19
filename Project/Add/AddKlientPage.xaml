@@ -1,0 +1,36 @@
+﻿<Page x:Class="Project.Add.AddKlientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project.Add"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="AddKlientPage">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+               
+                <RowDefinition Height="1*"/>
+              
+            </Grid.RowDefinitions>
+            
+            <Label Content="Имя" Grid.Row="0" Margin="40,21,293,25"/>
+            <Label Content="Информация" Grid.Row="1" Margin="40,21,293,25"/>
+            <Label Content="Дата рождения" Grid.Row="2" Margin="40,21,293,25"/>
+            
+
+
+            
+            <TextBox Name="natName" Grid.Row="0" Margin="122,21.2,152,25.2"></TextBox>
+            <TextBox Name="peculiarities" Grid.Row="1" Margin="122,21.6,152,24.6"/>
+            <DatePicker Name="birthdata" Grid.Row="2"  Margin="122,21.4,152,24.8" IsDropDownOpen="True" SelectedDateFormat="Short" />
+
+            <Button Grid.Row="3" Click="Button_Click" Margin="40,22.8,293,29.6">Добавить</Button>           
+        </Grid>
+    </Grid>
+</Page>

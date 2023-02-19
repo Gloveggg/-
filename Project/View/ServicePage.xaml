@@ -9,6 +9,25 @@
       Title="ServicePage">
 
     <Grid>
-        
+
+        <Button Content="Выход" HorizontalAlignment="Left" Height="40" Margin="10,0,0,0" 
+                VerticalAlignment="Top" Width="100" Click="Button_Click" />
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="40" Margin="150,0,0,0" 
+                VerticalAlignment="Top" Width="100" Click="Button_Click_1" />
+        <ListView x:Name="listviewUsers" HorizontalAlignment="Stretch"  
+                  Margin="10,60,10,10" VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id}" 
+                      Header="№" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding ServiceName}" 
+                      Header="Название услуги" Width="200"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Price}" 
+                      Header="Прайс" Width="100"/>
+
+
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>

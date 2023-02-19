@@ -1,5 +1,4 @@
-﻿using Project.Windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,27 +16,22 @@ using System.Windows.Shapes;
 namespace Project.View
 {
     /// <summary>
-    /// Логика взаимодействия для MaterialsPage.xaml
+    /// Логика взаимодействия для AddMateralPage.xaml
     /// </summary>
-    public partial class MaterialsPage : Page
+    public partial class AddMateralPage : Page
     {
-        
-        public MaterialsPage()
+        public AddMateralPage()
         {
             InitializeComponent();
-            listviewUsers.ItemsSource = AppData.bs.barberEntities.Materials.ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddMateralPage());
-        }
-        private void Button_Click1(object sender, RoutedEventArgs e)
-        {
-            StartWindows startWindows = new StartWindows();
+            AppData.bs.barberEntities.Materials.Add(new Model.Materials() { Volume = Convert.ToDecimal(this.volume.Text), Product = this.natName.Text });
 
-            startWindows.Show();
+            AppData.bs.barberEntities.SaveChanges();
 
+            NavigationService.Navigate(new MaterialsPage());
 
         }
     }

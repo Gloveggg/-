@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:Project.Windows"
         mc:Ignorable="d"
         Title="MainWindows" Height="900" Width="1600">
-    <Grid Background="AliceBlue">
+    <Grid  Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
+
             <RowDefinition Height="9*" />
         </Grid.RowDefinitions>
         <Grid >
@@ -18,16 +19,21 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <Button Name="Record" Content="Запись" Click="Record_Click" />
-            <Button Name="Klients" Content="Клиенты" Click="Klients_Click" Grid.Column="1"/>
-            <Button Name="Service" Content="Услуги" Click="Service_Click" Grid.Column="2"/>
-            <Button Name="Materials" Content="Материалы" Click="Materials_Click"  Grid.Column="3"/>
-            <Button Name="Barber" Content="Барбер" Click="Barber_Click" Grid.Column="4"/>
+            <Button   Name="Record" Content="Запись" Click="Record_Click" Margin="42,10,9.6,10.2" BorderBrush="#FFEE0F0F" />
+            <Button Background="#99D0C6C6" Name="Klients" Content="Клиенты" Click="Klients_Click" Grid.Column="1" Margin="42,10,9.6,10.2"/>
+            <Button  Background="#99D0C6C6"  Name="Service" Content="Услуги" Click="Service_Click" Grid.Column="2" Margin="42,10,9.6,10.2"/>
+            <Button Background="#99D0C6C6"  Name="Materials" Content="Материалы" Click="Materials_Click"  Grid.Column="3" Margin="42,10,9.6,10.2"/>
+            <Button Background="#99D0C6C6" Name="Barber" Content="Барбер" Click="Barber_Click" Grid.Column="4" Margin="42,10,9.6,10.2" />
+            <Image Source="c:\users\chern\source\repos\project\project\images\55
 
+" Grid.Column="5"  ></Image>
         </Grid>
         <Frame Name="MainFrm" Grid.Row="1" Grid.ColumnSpan="4"
-               NavigationUIVisibility="Hidden"/>
+               NavigationUIVisibility="Hidden"  />
 
+       
+       
     </Grid>
 </Window>

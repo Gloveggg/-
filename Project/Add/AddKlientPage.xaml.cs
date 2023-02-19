@@ -1,4 +1,4 @@
-﻿using Project.Windows;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,31 +14,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project.View
+namespace Project.Add
 {
     /// <summary>
-    /// Логика взаимодействия для MaterialsPage.xaml
+    /// Логика взаимодействия для AddKlientPage.xaml
     /// </summary>
-    public partial class MaterialsPage : Page
+    public partial class AddKlientPage : Page
     {
-        
-        public MaterialsPage()
+        public AddKlientPage()
         {
             InitializeComponent();
-            listviewUsers.ItemsSource = AppData.bs.barberEntities.Materials.ToList();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddMateralPage());
-        }
-        private void Button_Click1(object sender, RoutedEventArgs e)
-        {
-            StartWindows startWindows = new StartWindows();
 
-            startWindows.Show();
+            AppData.bs.barberEntities.Client.Add(new Model.Client()
+            { 
+                BirthDay = this.birthdata.SelectedDate.Value,
+                Name = this.natName.Text,
+                Peculiarities = this.peculiarities.Text });
 
+            AppData.bs.barberEntities.SaveChanges();
 
+            NavigationService.Navigate(new View.KlientsPage());
         }
     }
 }

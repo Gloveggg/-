@@ -7,14 +7,17 @@
         mc:Ignorable="d"
         Title="StartWindows" Height="350" Width="400">
     <Grid>
-        <StackPanel>
+        <StackPanel Background="AliceBlue">
             <TextBlock Text="Login" FontSize="20"/>
-            <TextBox x:Name="LoginTb"/>
-            <TextBlock Text="Password" FontSize="20"/>
-            <PasswordBox x:Name="PasswordTb"/>
-            <Button Content="Войти" Height="30" Click="Button_Click"/>
+            <TextBox x:Name="LoginTb" Background="AliceBlue"/>
+            <TextBlock Text="Password" Background="AliceBlue" FontSize="20"/>
+            <PasswordBox x:Name="PasswordTb" Background="AliceBlue"/>
+            <Button Content="Войти" Background="AliceBlue" Height="30" Click="Button_Click"/>
+           
+
         </StackPanel>
         <Frame Name="StartFrm"
-               NavigationUIVisibility="Hidden"/>
+               
+               NavigationUIVisibility="Hidden" Navigated="StartFrm_Navigated"/>
     </Grid>
 </Window>

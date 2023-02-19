@@ -9,11 +9,17 @@
       Title="RecordPage">
 
     <Grid>
+       
 
-        <Button Content="Load" HorizontalAlignment="Left" Height="40" Margin="10,0,0,0" 
-                VerticalAlignment="Top" Width="100" />
+        <Label  Content="Фильтровать по услуге" HorizontalAlignment="Left" Margin="266,18,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="genderFilter" DisplayMemberPath="ServiceName" HorizontalAlignment="Left" Margin="412,21,0,0" VerticalAlignment="Top" Width="150" DropDownClosed="genderFilter_DropDownClosed"/>
+
+        <Button Content="Выход" HorizontalAlignment="Left" Height="40" Margin="10,0,0,0" 
+                VerticalAlignment="Top" Width="100" Click="Button_Click_1" Background="#99D0C6C6"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="40"  Margin="150,0,0,0" 
+                VerticalAlignment="Top" Width="100" Click="Button_Click" Background="#99D0C6C6" />
         <ListView x:Name="listviewUsers" HorizontalAlignment="Stretch"  
-                  Margin="10,60,10,10" VerticalAlignment="Stretch">
+                  Margin="10,60,10,10" VerticalAlignment="Stretch" Background="AliceBlue">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id}" 

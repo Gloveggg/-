@@ -30,7 +30,7 @@ namespace Project.Windows
         {
             if (!string.IsNullOrWhiteSpace(LoginTb.Text) && !string.IsNullOrWhiteSpace(PasswordTb.Password))
             {
-                MessageBox.Show("Добро пожаловать");
+                MessageBox.Show ("Добро пожаловать");
                 MainWindows mainWindows = new MainWindows();
                 mainWindows.Show();
                 this.Close();
@@ -39,6 +39,11 @@ namespace Project.Windows
             {
                 MessageBox.Show("Введите данные");
             }
+        }
+
+        private void StartFrm_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
         }
     }
 }
